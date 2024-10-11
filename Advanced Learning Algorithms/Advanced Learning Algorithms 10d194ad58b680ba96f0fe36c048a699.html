@@ -1,0 +1,684 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Advanced Learning Algorithms</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="10d194ad-58b6-80ba-96f0-fe36c048a699" class="page sans"><header><h1 class="page-title">Advanced Learning Algorithms</h1><p class="page-description"></p></header><div class="page-body"><h3 id="11a194ad-58b6-8018-bf09-f49fe5c83bf1" class=""><mark class="highlight-yellow">Neural Networks</mark></h3><p id="11a194ad-58b6-805f-9316-ddc02a59b6d5" class=""><strong>Basic Structure:</strong></p><ul id="11a194ad-58b6-8027-bcb7-ddc12fdbd725" class="bulleted-list"><li style="list-style-type:disc"><strong>Input Layer</strong>: Receives the input data features (e.g., pixel values of an image).</li></ul><ul id="11a194ad-58b6-8036-b0dd-fee9dbb9b5cc" class="bulleted-list"><li style="list-style-type:disc"><strong>Hidden Layers</strong>: One or more layers where computations are performed. Each neuron in a hidden layer receives inputs, applies a <em>weight</em>, adds a <em>bias</em>, and then passes the result through an <em>activation function</em> to produce an output.</li></ul><ul id="11a194ad-58b6-808b-8b3c-e01f1bbbb181" class="bulleted-list"><li style="list-style-type:disc"><strong>Output Layer</strong>: Produces the final prediction or output of the network. For example, a binary classification problem might produce two values representing the probability of each class.</li></ul><p id="11a194ad-58b6-80f6-8725-e0968b035442" class=""><strong>Components:</strong></p><ul id="11a194ad-58b6-80b2-b26e-de198df15cce" class="bulleted-list"><li style="list-style-type:disc"><strong>Neurons</strong>: The building blocks of the network. Each neuron performs a weighted sum of its inputs and applies an activation function.</li></ul><ul id="11a194ad-58b6-80ef-8ed8-fe944f96ef7d" class="bulleted-list"><li style="list-style-type:disc"><strong>Weights</strong>: Parameters that define the strength of connections between neurons.</li></ul><ul id="11a194ad-58b6-809b-8c71-c0912f385035" class="bulleted-list"><li style="list-style-type:disc"><strong>Biases</strong>: Additional parameters added to the weighted sum before applying the activation function.</li></ul><ul id="11a194ad-58b6-80fe-841e-d5fbb62292db" class="bulleted-list"><li style="list-style-type:disc"><strong>Activation Functions</strong>: Functions like <em>ReLU</em> (Rectified Linear Unit), <em>Sigmoid</em>, or <em>Tanh</em>, which introduce non-linearity and help the network learn complex patterns.</li></ul><p id="11a194ad-58b6-805a-a4d4-ce9dbb933d77" class=""><strong>Learning Process:</strong></p><ul id="11a194ad-58b6-803c-953a-e9c5fef4ae1a" class="bulleted-list"><li style="list-style-type:disc">Neural networks are trained using a process called <strong>backpropagation</strong>:<ol type="1" id="11a194ad-58b6-8010-9af1-c32083758cd9" class="numbered-list" start="1"><li><strong>Forward Pass</strong>: The input data is passed through the network, generating predictions.</li></ol><ol type="1" id="11a194ad-58b6-804a-a81c-c6035e4e9dcb" class="numbered-list" start="2"><li><strong>Loss Calculation</strong>: A <em>loss function</em> (e.g., Mean Squared Error for regression) measures how far the predictions are from the actual values.</li></ol><ol type="1" id="11a194ad-58b6-80da-b897-ddfd745fc936" class="numbered-list" start="3"><li><strong>Backward Pass</strong>: The network calculates the gradients of the loss with respect to each weight using a method called <em>gradient descent</em>. This tells the network how to update its weights to reduce the loss.</li></ol><ol type="1" id="11a194ad-58b6-8089-97d9-d2e4552cbd72" class="numbered-list" start="4"><li><strong>Weight Update</strong>: The weights are adjusted to minimize the loss.</li></ol></li></ul><p id="11a194ad-58b6-8044-9152-c9e1e2bcdd7b" class=""><strong>Types of Neural Networks:</strong></p><ul id="11a194ad-58b6-80bb-9e53-ec2afff23402" class="bulleted-list"><li style="list-style-type:disc"><strong>Feedforward Neural Networks</strong>: Data flows in one direction (from input to output), commonly used for general prediction problems.</li></ul><ul id="11a194ad-58b6-800d-83d6-fd06f94ae3b5" class="bulleted-list"><li style="list-style-type:disc"><strong>Convolutional Neural Networks (CNNs)</strong>: Used for image recognition and computer vision tasks.</li></ul><ul id="11a194ad-58b6-8076-94b6-f122b57a325c" class="bulleted-list"><li style="list-style-type:disc"><strong>Recurrent Neural Networks (RNNs)</strong>: Designed for sequential data, like time series or language modeling.</li></ul><p id="11a194ad-58b6-80e0-8a35-d95fd187ae22" class=""><mark class="highlight-yellow"><strong>Demand Prediction</strong></mark></p><figure id="11a194ad-58b6-80e6-9a18-d16b3f284066" class="image"><a href="image.png"><img style="width:707.984375px" src="image.png"/></a></figure><ul id="11a194ad-58b6-80f4-8f80-ea9adbcb18a2" class="bulleted-list"><li style="list-style-type:disc"><strong>Input Layer</strong>:<ul id="11a194ad-58b6-808a-8ba3-daa698b1497b" class="bulleted-list"><li style="list-style-type:circle">This layer includes features influencing demand, such as <em>price</em>, <em>shipping</em>, <em>marketing</em>, and <em>material</em> costs. These features are represented as 4 numbers (input variables) fed into the neural network.</li></ul><ul id="11a194ad-58b6-80ac-8732-c8d569638519" class="bulleted-list"><li style="list-style-type:circle">Each feature helps the network understand factors that might impact the demand for a product.</li></ul></li></ul><ul id="11a194ad-58b6-8065-b371-fc99947537d4" class="bulleted-list"><li style="list-style-type:disc"><strong>Hidden Layer</strong>:<ul id="11a194ad-58b6-804a-9b1f-ce23d3853f8e" class="bulleted-list"><li style="list-style-type:circle">The hidden layer consists of neurons (shown as blue circles), and this layer processes the input data. The activations from this layer represent intermediate computations based on the input.</li></ul><ul id="11a194ad-58b6-80dd-bb68-f80719288bd1" class="bulleted-list"><li style="list-style-type:circle">In this example, the hidden layer learns representations like <em>affordability</em>, <em>awareness</em>, and <em>perceived quality</em>, which are abstract features created by the neural network to predict demand.</li></ul></li></ul><ul id="11a194ad-58b6-804b-8c6b-de3030f241ab" class="bulleted-list"><li style="list-style-type:disc"><strong>Output Layer</strong>:<ul id="11a194ad-58b6-809e-a995-e4a4b2d286b2" class="bulleted-list"><li style="list-style-type:circle">The final output layer produces a single number, which could represent a prediction like the <strong>probability of a product being a top seller</strong>. This results from all computations from the hidden layer being processed to give a final forecast (for example, predicting how well a product will sell).</li></ul></li></ul><ul id="11a194ad-58b6-80ce-910e-cad8a0f9c4b8" class="bulleted-list"><li style="list-style-type:disc"><strong>Activations</strong>:<ul id="11a194ad-58b6-800f-827d-dd86b0f4e438" class="bulleted-list"><li style="list-style-type:circle">After processing the input through the hidden layer, activation values are generated and passed to the output layer. These activation values help in forming the final prediction.</li></ul></li></ul><p id="11a194ad-58b6-8012-a86f-c4ae97055933" class=""><span style="border-bottom:0.05em solid">In summary, </span><strong><span style="border-bottom:0.05em solid">demand prediction</span></strong><span style="border-bottom:0.05em solid"> here involves feeding relevant business features (like price and marketing) into a neural network that uses hidden layers to create intermediate features (such as affordability and awareness). These help predict the likelihood of a product being a top seller.</span></p><p id="11a194ad-58b6-8082-a47c-ee1e9054fa35" class=""><mark class="highlight-yellow"><strong>Multiple Hidden Layers</strong></mark></p><figure id="11a194ad-58b6-80c9-bd8c-d9d5a9f3a707" class="image"><a href="image%201.png"><img src="image%201.png"/></a></figure><ul id="11a194ad-58b6-80bf-b3fd-eb426d57417a" class="bulleted-list"><li style="list-style-type:disc"><strong>Why Multiple Hidden Layers?</strong>:<ul id="11a194ad-58b6-8005-97df-ffcc1310e742" class="bulleted-list"><li style="list-style-type:circle">Using multiple hidden layers allows the neural network to build <strong>more abstract representations</strong> of the input data. For example, the first layer might learn basic patterns, while deeper layers can learn more complex relationships, enabling the network to capture non-linear dependencies between input features and demand.</li></ul><ul id="11a194ad-58b6-8027-b278-de51b0114ac2" class="bulleted-list"><li style="list-style-type:circle">However, as the number of hidden layers increases, the network may require more data and computational power to train effectively. This is especially useful when the data is complex, and simple models might not perform well.</li></ul></li></ul><p id="11a194ad-58b6-80ee-acfa-d20868b896d2" class=""><strong>Key Takeaways:</strong></p><ul id="11a194ad-58b6-8020-af56-e6bf01050bfc" class="bulleted-list"><li style="list-style-type:disc"><strong>Single hidden layer models</strong> can capture basic patterns in the data but might struggle with more complex relationships.</li></ul><ul id="11a194ad-58b6-80ad-9def-e78ff3c0465a" class="bulleted-list"><li style="list-style-type:disc"><strong>Multiple hidden layers</strong> allow for more nuanced and detailed learning, making neural networks more powerful for tasks like demand prediction, where many factors interact in complex ways.</li></ul><ul id="11a194ad-58b6-80f0-99f9-efa434dea980" class="bulleted-list"><li style="list-style-type:disc">Neural networks with deeper architectures (more hidden layers) can handle the non-linear and multivariate nature of demand forecasting, leading to more accurate predictions.</li></ul><p id="11a194ad-58b6-8029-bc0d-e1a8d274bdcf" class=""><mark class="highlight-yellow"><strong>Face Recognition Using Neural Networks</strong></mark></p><figure id="11a194ad-58b6-8050-93b3-f32a475b7ce1" class="image"><a href="image%202.png"><img style="width:707.96875px" src="image%202.png"/></a></figure><p id="11a194ad-58b6-805f-96a1-dae443844538" class=""><strong>Image as a Matrix of Pixels</strong>:</p><ul id="11a194ad-58b6-80ef-b969-cdb8fbd21315" class="bulleted-list"><li style="list-style-type:disc">The face image is made up of pixels. Each pixel has an intensity value (ranging from 0 to 255) for a grayscale image.</li></ul><ul id="11a194ad-58b6-80a5-96f3-ef9ad9b20333" class="bulleted-list"><li style="list-style-type:disc">If the image is <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mo>×</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">1000×1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span></span><span>﻿</span></span> pixels, it creates a 2D matrix (or grid) of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mo>×</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">1000×1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span></span><span>﻿</span></span> values, resulting in 1 million pixel values. Each number in this grid represents the brightness of a pixel.</li></ul><p id="11a194ad-58b6-8039-b056-ccd58d56a46e" class=""><strong>Flattening the Matrix</strong>:</p><ul id="11a194ad-58b6-806f-b5d1-c93a4d39d794" class="bulleted-list"><li style="list-style-type:disc">This matrix (2D) is then flattened into a 1D vector (array). In this case, the 1 million pixel values from the <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn><mo>×</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">1000×1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1000</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span></span><span>﻿</span></span> image are arranged into a column vector <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span> of length 1 million.</li></ul><ul id="11a194ad-58b6-8064-aaea-effada091db3" class="bulleted-list"><li style="list-style-type:disc">This vector becomes the input for the neural network.</li></ul><p id="11a194ad-58b6-8026-9634-e8e4c6400462" class=""><mark class="highlight-yellow"><strong>Example for Convolutional Neural Network (CNN)</strong></mark></p><figure id="11a194ad-58b6-8074-8c9d-c576b574f479" class="image"><a href="image%203.png"><img style="width:707.9896240234375px" src="image%203.png"/></a></figure><ul id="11a194ad-58b6-8087-a5da-db2133369eae" class="bulleted-list"><li style="list-style-type:disc"><strong>Input Layer</strong>:<ul id="11a194ad-58b6-8033-b16b-e19a8f9ff369" class="bulleted-list"><li style="list-style-type:circle">The pixel values from the flattened image <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span> are fed into the neural network as the input layer.</li></ul><ul id="11a194ad-58b6-80eb-b13a-f75abf971a2a" class="bulleted-list"><li style="list-style-type:circle">Neural networks process images by breaking down the image into small sections, called <strong>filters</strong> or <strong>convolutions</strong>. These filters capture important features, such as edges, textures, and patterns (shown in the blue squares on the face).</li></ul></li></ul><ul id="11a194ad-58b6-8065-a2bc-fe87e5f51a93" class="bulleted-list"><li style="list-style-type:disc"><strong>Convolutional Layers</strong>:<ul id="11a194ad-58b6-800b-83c6-e2658fb4c34d" class="bulleted-list"><li style="list-style-type:circle">Each layer in the CNN applies these filters to different parts of the image. The lower layers detect simple features, such as edges or corners (as shown in the second section of the image, where grids detect smaller features).</li></ul><ul id="11a194ad-58b6-809e-bad5-e21554b9a494" class="bulleted-list"><li style="list-style-type:circle">As we go deeper into the network, the layers detect more complex patterns like eyes, noses, or mouths (the higher-level features). This is demonstrated by the progressively more detailed and structured patterns seen in the middle and right parts of the second image.</li></ul></li></ul><ul id="11a194ad-58b6-8064-9b41-e3b6f7478483" class="bulleted-list"><li style="list-style-type:disc"><strong>Fully Connected Layer</strong>:<ul id="11a194ad-58b6-80c8-ac15-e4148b46037c" class="bulleted-list"><li style="list-style-type:circle">After convolutional layers, the final layer is a <strong>fully connected layer</strong> (shown by the circle nodes). Each node in this layer represents a probability, specifically the likelihood of the input image corresponding to a specific person (for instance, &quot;Person XYZ&quot;).</li></ul></li></ul><ul id="11a194ad-58b6-8000-9038-e4a168d85ee4" class="bulleted-list"><li style="list-style-type:disc"><strong>Output</strong>:<ul id="11a194ad-58b6-8074-9673-fda446087e4c" class="bulleted-list"><li style="list-style-type:circle">The neural network outputs a probability value representing how confident it is that the image belongs to a certain person. If the probability is high, it identifies the person as &quot;XYZ.&quot;</li></ul></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
